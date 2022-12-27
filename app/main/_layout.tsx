@@ -28,6 +28,22 @@ export default function Layout() {
       />
 
       <Tabs.Screen
+        name="consultation"
+        options={{
+          title: "Consultation",
+          header: (props) => <ModalHeader {...props} />,
+          tabBarIcon: ({ color, focused, size }) => (
+            <Icon
+              as={MaterialCommunityIcons}
+              color={color}
+              size={size}
+              name="chat"
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
         name="schedule"
         options={{
           title: "Schedule",
