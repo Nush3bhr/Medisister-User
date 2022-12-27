@@ -15,7 +15,7 @@ import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { useMedicines } from "../../../api/medicines";
 import { useAddToCart, useGetCart } from "../../../api/cart";
 import config from "../../../utils/config";
-import { Tabs } from "expo-router";
+import { Tabs, useLink } from "expo-router";
 import AddToCartButton from "../../../components/AddToCartButton";
 import MyImage from "../../../components/MyImage";
 
@@ -24,7 +24,7 @@ const Medicine = () => {
   const { mutate } = useAddToCart();
   const { data: cart } = useGetCart();
   const [searchField, setSearchField] = React.useState("");
-
+  const link = useLink();
   const searchedData = React.useMemo(() => {
     if (searchField === "") {
       return data;
@@ -112,7 +112,13 @@ const Medicine = () => {
           <Text>Rs. {cart.total}</Text>
         </VStack>
 
-        <Button>Proceed To Checkout</Button>
+        <Button
+          onPress={() => {
+            link.push("/main/cart");
+          }}
+        >
+          Proceed To Checkout
+        </Button>
       </HStack>
     </VStack>
   );

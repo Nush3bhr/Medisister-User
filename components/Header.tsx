@@ -8,6 +8,7 @@ import moment from "moment";
 import CartIcon from "./CartIcon";
 import { useSettingsStore } from "../context/settings";
 import { useAuthStore } from "../context/auth";
+import { Link } from "expo-router";
 
 function generateGreetings() {
   const currentTime = moment();
@@ -46,7 +47,9 @@ const Header = () => {
     >
       <HStack alignItems={"center"} justifyContent="space-between">
         <HStack space={2} alignItems={"center"}>
-          <Avatar />
+          <Link href="/main/profile">
+            <Avatar source={{ uri: authStore.state.user.avatar }} />
+          </Link>
           <VStack>
             <Text fontSize={16}>{generateGreetings()}</Text>
             <Text fontSize={24}>{authStore?.state?.user?.firstName}</Text>

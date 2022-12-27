@@ -12,12 +12,14 @@ import {
 } from "native-base";
 import React from "react";
 import { TouchableHighlight, TouchableOpacity } from "react-native";
+import { useAuthStore } from "../context/auth";
 import CartIcon from "./CartIcon";
 
 type Props = { hideActions: boolean } & NativeStackHeaderProps;
 
 const ModalHeader = ({ hideActions = false, ...props }: Props) => {
   const navigation = useNavigation();
+  const authStore = useAuthStore();
   return (
     <HStack
       pr={3}
@@ -46,10 +48,10 @@ const ModalHeader = ({ hideActions = false, ...props }: Props) => {
         <HStack alignItems={"center"} space={2}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Profile");
+              navigation.navigate("/main/profile");
             }}
           >
-            <Avatar size={10} />
+            <Avatar size={10} source={{ uri: authStore.state.user.avatar }} />
           </TouchableOpacity>
           <CartIcon />
           {/* <Text>{props?.options?.title}</Text> */}

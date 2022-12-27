@@ -15,7 +15,6 @@ export default function Layout() {
         name="home"
         options={{
           title: "Home",
-
           tabBarIcon: ({ color, focused, size }) => (
             <Icon
               as={MaterialCommunityIcons}
@@ -75,6 +74,18 @@ export default function Layout() {
         options={{
           header: (props) => <ModalHeader hideActions {...props} />,
           title: "Cart",
+          href: null,
+          tabBarStyle: {
+            display: "none",
+          },
+        }}
+      />
+
+      <Tabs.Screen
+        name="profile"
+        options={{
+          header: (props) => <ModalHeader hideActions {...props} />,
+          title: "Profile",
           href: null,
           tabBarStyle: {
             display: "none",

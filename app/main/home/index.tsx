@@ -28,6 +28,7 @@ const items = [
   {
     title: "Consultation",
     image: ConsultationImage,
+    route: "consultation",
   },
   // {
   //   title: "Lab Test",
