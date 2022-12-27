@@ -1,10 +1,20 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import {
+  Link,
+  Redirect,
+  useFocusEffect,
+  useHref,
+  useNavigation,
+} from "expo-router";
 
 const consultation = () => {
+  const { params } = useHref();
+
   return (
     <View>
       <Text>consultation</Text>
+      <Link href="/main/consultation/book-consultation">Book</Link>
     </View>
   );
 };

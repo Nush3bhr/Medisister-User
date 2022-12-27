@@ -11,10 +11,12 @@ import {
 } from "../utils/themes";
 import React from "react";
 import QueryProvider from "../utils/ReactQuery";
+import { useSettingsStore } from "../context/settings";
 
 export default function RootLayout() {
   // Use some global auth context to control the route access.
   const { state } = useAuthStore();
+  const { state: settings } = useSettingsStore();
   const link = useLink();
 
   let [fontsLoaded] = useGoogleFonts();
@@ -22,13 +24,23 @@ export default function RootLayout() {
   const [redirect, setRedirect] = React.useState(false);
 
   React.useEffect(() => {
-    if (!fontsLoaded) return;
+    if (!fontsLoaded || !settings?.onBoarded) return;
+
+    if (state.user?.isFirstTime) {
+      link.replace("/first-time");
+      return;
+    }
     if (state?.user?.id) {
       link.replace("/main");
     } else {
       link.replace("/sign-in");
     }
-  }, [fontsLoaded, state?.user?.id]);
+  }, [
+    fontsLoaded,
+    state?.user?.id,
+    settings?.onBoarded,
+    state.user?.isFirstTime,
+  ]);
 
   if (!fontsLoaded) return null;
   return (

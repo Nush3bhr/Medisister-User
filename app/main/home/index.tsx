@@ -22,13 +22,17 @@ import { useAuthStore } from "../../../context/auth";
 import config from "../../../utils/config";
 import { useMedicineCategories } from "../../../api/medicineCategory";
 import Header from "../../../components/Header";
+import { useLink } from "expo-router";
 
 const items = [
   { title: "Medicines", image: MedicineImage, route: "medicine" },
   {
     title: "Consultation",
     image: ConsultationImage,
-    route: "consultation",
+    route: {
+      name: "consultation",
+      params: { fromHome: true },
+    },
   },
   // {
   //   title: "Lab Test",
@@ -41,6 +45,7 @@ const items = [
 ];
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const link = useLink();
   const authStore = useAuthStore();
 
   useEffect(() => {
@@ -96,7 +101,7 @@ const HomeScreen = () => {
             <TouchableOpacity
               key={item.title}
               onPress={() => {
-                navigation.navigate(item?.route);
+                navigation.navigate(item.route);
               }}
             >
               <VStack w={185} h={85} alignItems={"center"}>
