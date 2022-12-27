@@ -14,7 +14,7 @@ const consultation = () => {
   return (
     <View>
       <Text>consultation</Text>
-      <Link href="/main/consultation/book-consultation">Book</Link>
+      <Link href="/main/consultation/upcoming-consultation">Book</Link>
     </View>
   );
 };

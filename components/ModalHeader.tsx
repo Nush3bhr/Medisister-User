@@ -1,6 +1,7 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
+import { Link } from "expo-router";
 import {
   Avatar,
   Heading,
@@ -46,13 +47,9 @@ const ModalHeader = ({ hideActions = false, ...props }: Props) => {
 
       {!hideActions && (
         <HStack alignItems={"center"} space={2}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("/main/profile");
-            }}
-          >
+          <Link href="/main/profile">
             <Avatar size={10} source={{ uri: authStore.state.user.avatar }} />
-          </TouchableOpacity>
+          </Link>
           <CartIcon />
           {/* <Text>{props?.options?.title}</Text> */}
         </HStack>
