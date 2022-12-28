@@ -30,7 +30,7 @@ export default function Layout() {
         name="consultation"
         options={{
           title: "Consultation",
-          // header: (props) => <ModalHeader hideActions {...props} />,
+          header: (props) => <ModalHeader hideActions {...props} />,
           tabBarIcon: ({ color, focused, size }) => (
             <Icon
               as={MaterialCommunityIcons}
